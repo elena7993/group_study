@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2주차 문제</title>
+  <style>
+    .practice_1 {
+      position: relative;
+      z-index: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 100px;
+    }
+    .practice_1 div {
+      width: 200px;
+      height: 200px;
+    }
+
+    .practice_2 {
+      position: relative;
+      z-index: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 100px;
+    }
+
+    .toggle {
+      margin: 0 auto;
+      width: 80px;
+      height: 30px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 50px;
+      position: relative;
+    }
+    
+    .circle {
+      width: 25px;
+      height: 25px;
+      background-color: gainsboro;
+      border-radius: 100%;
+      position: relative;
+      top: 2.5px;
+      left: 2.5px;
+    }
+    
+    .active {
+      background-color: rgb(65, 255, 65);
+    }
+    
+    .toggle.active .circle {
+      left: 52.5px;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 
+    practice_1
+    (1) DOM 스크립트의 기초 개념을 이해 할 것
+    (2) document.querySelector 를 사용하여 practice_1 박스 안에 있는 "red", "green", "blue"를 선택 할 것
+    (3) .style 을 사용하여 backgroundColor 을 "red"는 red로, "green"은 green으로, "blue"는 blue로 만들 것
+  -->
+  <div class="practice_1">
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="blue"></div>
+  </div>
+
+    <!-- 
+    practice_2
+    (1) 자바스크립트 이벤트 객체, 이벤트 위임, classList, css 새로배운 선택자를 이해 할 것
+    (2) 기능 구현: 토글 안에서 자식인 'circle' 만 클릭 이벤트가 발생해야 하며, circle을 클릭 시 부모인 'toggle'의 'background-color: rgb(65, 255, 65)' 로 바뀌고, circle은 'left: 52.5px' 라는 이벤트가 발생한다.
+    (3) 힌트: 사용되는 내용: 1) 자바스크립트: e.target.classList.contains('circle'), e.target.parentNode.classList.toggle('active')     2) css: .toggle.active .circle
+  -->
+  <div class="practice_2">
+    <div class="toggle">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+
+  <script>
+    const red = document.querySelector('.red');
+    const green = document.querySelector('.green');
+    const blue = document.querySelector('.blue');
+    red.style.backgroundColor = "red";
+    green.style.backgroundColor = "green";
+    blue.style.backgroundColor = "blue";
+
+
+    const toggleEl = document.querySelector('.toggle');
+    const circleEl = document.querySelector('.circle');
+    toggleEl.addEventListener('click', (e) => {
+      if (e.target.classList.contains('circle')) {
+        e.target.parentNode.classList.toggle('active');
+      }
+    });
+  </script>
+</body>
+</html>
