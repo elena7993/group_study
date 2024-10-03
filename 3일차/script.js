@@ -31,7 +31,7 @@ const con = document.querySelectorAll('.con');
 
 // const clickHandler = (e) => {
 //   if (e.target.classList.contains('con')){
-     // e.target.parentNode.classList.toggle('active');
+//     // e.target.parentNode.classList.toggle('active');
 //     e.target.classList.toggle('active');
 //   }}
 
