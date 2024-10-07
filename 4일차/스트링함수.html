@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="wrap">
+    <h2 class="current_time"></h2>
+  </div> 
+
+  <script>
+
+    // 현재시간을 불러올 수 있는 것
+    // 현재분을 불러올 수 있는 것
+    // 현재초를 볼러올 수 있는 것
+
+    const currentTime = document.querySelector('.current_time');
+
+    const datehandler = () =>{  
+    const date = new Date();
+    
+    const hour = date.getHours();
+    const min = date.getMinutes();
+    // const sec = date.getSeconds();
+    const sec = String(date.getSeconds()).padStart(2, "0");
+
+    currentTime.innerHTML = `${hour}:${min}:${sec}`;
+    }
+
+    setInterval(datehandler, 1000);
+
+  // *스트링함수
+  // String();
+  // =>어떤 값을 문자열로 반환해준다
+
+  // padStart(길이(자릿수), 넣을문자)
+  // padStart(내가만들고 싶은 숫자, 넣을 문자)
+
+  // padstart(2, '0')
+
+  // const ex = "7".padStart(2, "3");
+  // console.log(ex);
+
+
+
+
+
+  </script>
+  
+</body>
+</html>

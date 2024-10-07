@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h2>현재시간</h2>
+  <div class="current_time"></div>
+
+  <script>
+
+    // *문제
+    // =>오전/오후 12:19:23
+    // 이런식으로 구현
+
+    // 오전/오후 나워야함 (if문으로 12시 기준으로 나눠줌??)
+
+    // 현재시 필요함
+    // 현재분 필요함
+    // 현재초 필요함
+
+    const current_time = document.querySelector('.current_time');
+
+    const elenasClock = () => {
+      const date = new Date();
+
+      const hour = String(date.getHours()).padStart(2, "0");
+      const mins = String(date.getMinutes()).padStart(2, "0");
+      const secs = String(date.getSeconds()).padStart(2, "0");
+
+      if(hour > 12){
+        current_time.innerText = `오후 ${hour}:${mins}:${secs}`;
+
+      }else{
+        current_time.innerText = `오전 ${hour}:${mins}:${secs}`;
+      }
+
+    }
+
+    elenasClock();
+    // =>그 함수를 호출함으로서 브라우저를 켰을 때 처음부터
+    // 이 함수가 바로 호출될 수 있게 함!
+
+    setInterval(elenasClock, 1000);
+
+  </script>
+  
+</body>
+</html>
