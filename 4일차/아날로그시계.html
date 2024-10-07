@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+    <style>
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgray;
+      }
+
+      .clock{
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        border: 8px solid #f3741a;
+        position: relative;
+        background-color: #f3741a;
+      }
+
+      .second,
+      .minute,
+      .hour{
+        width: 50%;
+        height: 6px;
+        position: absolute;
+        top: 50%;
+        transform: rotate(90deg);
+        transition: all 0.05s ease-in-out;
+        transform-origin: 100%;
+      }
+
+      .hour{
+        height: 7px;
+        background-color: #000
+      }
+
+      .minute{
+        height: 4px;
+        background-color: #000
+      }
+
+      .second{
+        height: 2px;
+        background-color: rgb(252, 216, 12)
+      }
+
+    </style>
+
+</head>
+<body>
+
+  <div class="clock">
+
+    <div class="second"></div>
+    <div class="minute"></div>
+    <div class="hour"></div>
+
+  </div>
+
+  <div class="time_wrapper">
+    <h3 class="current_time"></h3>
+  </div>
+
+  <script>
+
+    // 1초당 6도
+    // 1분당 6도 + 초에 0.1도씩
+    // 1시간당 30도 + 1분에 0.5도씩
+
+    const secEl = document.querySelector('.second'); 
+    const minEl = document.querySelector('.minute'); 
+    const hourEl = document.querySelector('.hour'); 
+
+
+    const yourClock = () => {
+      const date = new Date();
+
+      const hour = date.getHours(); 
+      const mins = date.getMinutes(); 
+      const sec = date.getSeconds();
+      
+      const hourDeg = (hour * 30) + (mins * 0.5); 
+      const minsDeg = (mins * 6) + (sec * 0.1);
+      const secDeg = sec * 6;
+
+      hourEl.style.transform = `rotate(${hourDeg + 90}deg)`;
+      minEl.style.transform = `rotate(${minsDeg + 90}deg)`;
+      secEl.style.transform = `rotate(${secDeg + 90}deg)`;
+
+      // css시계는 기본이 9시방향으로 설정되어있음
+      // 따라서 90도씩 더해줘야함*********************
+
+    }
+
+    yourClock();
+
+    setInterval(yourClock, 1000);
+
+    const currentTime = document.querySelector('current_time');
+
+    const yourClock_1 = () => {
+      const date = new Date();
+
+      const hour = String(date.getHours()).padStart(2, "0"); 
+      const mins = String(date.getMinutes()).padStart(2, "0"); 
+      const sec = String(date.getSeconds()).padStart(2, "0");
+
+      currentTime.innerText = `${hour}:${mins}:${sec}😋`;
+    }
+
+    yourClock_1();
+
+    setInterval(yourClock_1, 1000)
+
+
+
+  </script>
+  
+</body>
+</html>
