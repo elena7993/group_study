@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .section_1{
+      width: 100%;
+      height: 800px;
+      background-color: lightblue;
+    }
+
+    .section_2{
+      width: 100%;
+      height: 800px;
+      background-color: lightcoral;
+    }
+
+    .section_3{
+      width: 100%;
+      height: 800px;
+      background-color: lightyellow;
+    }
+
+    .active_1{
+      background-color: lightgoldenrodyellow;
+    }
+
+    .active_2{
+      background-color: lightsteelblue;
+    }
+
+    .active_3{
+      background-color: lightseagreen;
+    }
+
+  </style>
+
+</head>
+<body>
+
+    <section class="section_1"></section>
+    <section class="section_2"></section>
+    <section class="section_3"></section>
+
+  
+
+  <!-- *문제
+  =>섹션 3개가 있고
+  각 섹션은 브라우저크기와 동일하다
+  스크롤을 내려서 각 섹션에 다다르면 그 섹션의 색깔이 바뀐다. (색상은 각자 원하는 색으로 다 다르게 설정해주세요)
+
+  =>배열객체와 if문 for문을 활용하세요 -->
+
+  
+
+  <script>
+
+    // 사용할 것: offsetTop, offsetHeight, 
+    // 배열?????????????????
+
+
+
+    // const sec1_El = document.querySelector('.section_1');
+    // const sec2_El = document.querySelector('.section_2');
+    // const sec3_El = document.querySelector('.section_3');
+
+    const sec_1El = document.querySelector('.section_1');
+    const sec_2El = document.querySelector('.section_2');
+    const sec_3El = document.querySelector('.section_3');
+
+    const sec1_ElHeight = sec_1El.offsetHeight;
+    const sec2_ElHeight = sec_2El.offsetHeight;
+    const sec3_ElHeight = sec_3El.offsetHeight;
+
+    const handleScroll = () => {
+      const pageY = pageYOffset;
+      // 현재 스크롤 위치
+
+      if(pageY < sec1_ElHeight){
+        sec_1El.classList.add('active_1');
+
+      }else if(pageY >= sec1_ElHeight && pageY < (sec1_ElHeight + sec2_ElHeight)){
+        sec_2El.classList.add('active_2');
+
+      }else if(pageY > (sec1_ElHeight + sec2_ElHeight)){
+        sec_3El.classList.add('active_3');
+      };
+      
+      };
+
+      // 스크롤바가 어떤 범위안에 있는지에 여부에 따라 변화가 나타난다고 생각해 볼 것**********
+    
+    window.addEventListener('scroll', handleScroll);
+
+
+    // const handleScroll = () => {
+    //   const pageY = pageYOffset;
+    //   // 현재 스크롤 위치임
+
+    //   if(pageY < sec1_ElHeight){
+    //     // 섹션1의 위치를 벗어났다??? 그러면 배경이 변한다! 
+    //     sec_1El.classList.add('active_1');
+    //   }else if(pageY >= sec1_ElHeight){
+    //     sec_2El.classList.add('active_2');
+    //     // 스크롤 위치가 섹션1의 위치를 벗어나고 
+    //     // 또 그 스크롤 위치가 섹션 1의 높이와 2의 높이를 합친 값(쉽게 두 칸)
+    //   }else if(pageY >= sec2_ElHeight){
+    //     // 애는 스크롤이 언제 변해야함???
+    //     sec_3El.classList.add('active_3');
+    //   };
+      
+    //   };
+    
+    // window.addEventListener('scroll', handleScroll);
+
+  </script>
+  
+</body>
+</html>
