@@ -27,6 +27,7 @@ const saveComments = (comment) => {
   const savedComments = localStorage.getItem("comments");
   const newComments = savedComments ? `${savedComments}||${comment}` : comment;
   localStorage.setItem("comments", newComments);
+  // console.log("됩니까");
 };
 
 const handleSubmit = (e) => {
@@ -61,3 +62,5 @@ window.addEventListener('DOMContentLoaded', loadComment);
 // 스토리지로 리로드 했을 때 댓글 남아있게 하기
 
 // setItem을 꼭 하지 않더라고 getItem을 할 수는 있다
+
+
